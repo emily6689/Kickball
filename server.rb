@@ -20,41 +20,50 @@ end
 
 teams = csv_load
 teams.each do |team|
-
   safe_url = URI::encode(team.first)
   get "/#{safe_url}" do
     @team_name = team.first
     @team_players = team.last
     erb :team_page
   end
-
 end
 
 get '/' do
   @teams = teams
   # binding.pry
   erb :index
-
 end
 
 get '/:position' do
   @players = []
-
   teams.each do |key, value|
-
-
-
     value.each do |player|
       # binding.pry
       player["team_name"] = key
       @players << player if  player["position"] == params[:position]
-
     end
    end
-
  erb :position_page
-
 end
+
+
+
+get '/states/:state' do
+  source = 'https://jobs.github.com/positions.json?description=rails&location='
+  resp = Net::HTTP.get_response(URI.parse(source))
+  data = resp.body
+  @jobs = JSON.parse(data)
+
+
+get '/states/:state' do
+  source = 'https://jobs.github.com/positions.json?description=rails&location='
+  resp = Net::HTTP.get_response(URI.parse(source))
+  data = resp.body
+  @jobs = JSON.parse(data)
+
+  @jobs = @jobs.select do |job|
+    job["location"] =~ /#{params[:state]}\z/
+  end
 
 set :views, File.dirname(__FILE__) + '/views'
 
