@@ -1,12 +1,6 @@
-require 'CSV'
+require 'csv'
 require 'pry'
 require 'sinatra'
-
-
-
-
-
-
 
 def csv_load
   hash = {}
