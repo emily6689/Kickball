@@ -47,24 +47,6 @@ get '/:position' do
 end
 
 
-
-get '/states/:state' do
-  source = 'https://jobs.github.com/positions.json?description=rails&location='
-  resp = Net::HTTP.get_response(URI.parse(source))
-  data = resp.body
-  @jobs = JSON.parse(data)
-
-
-get '/states/:state' do
-  source = 'https://jobs.github.com/positions.json?description=rails&location='
-  resp = Net::HTTP.get_response(URI.parse(source))
-  data = resp.body
-  @jobs = JSON.parse(data)
-
-  @jobs = @jobs.select do |job|
-    job["location"] =~ /#{params[:state]}\z/
-  end
-
 set :views, File.dirname(__FILE__) + '/views'
 
 
