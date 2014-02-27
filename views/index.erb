@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Paul and Em's Amazing Teams</title>
+    <link rel="stylesheet" href="home.css" />
+  </head>
+
+  <body>
+    <h1>Team List!!</h1>
+
+    <ul>
+      <% @teams.each do |team| %>
+        <li> <a href="/<%= team.first %>"><%= team.first %></a></li>
+      <% end %>
+    </ul>
+
+<% params[:name] = "blah"%>
+  </body>
+</html>
+
+
+<p>safsd</p>
+<ul>
+  <!-- start my loop -->
+  <li>
+    <!-- team name -->
+  </li>
+  <!-- end loop -->
+</ul>
