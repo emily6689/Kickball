@@ -37,6 +37,24 @@ get '/' do
 
 end
 
+get '/:position' do
+  @players = []
+
+  teams.each do |key, value|
+
+
+
+    value.each do |player|
+      # binding.pry
+      player["team_name"] = key
+      @players << player if  player["position"] == params[:position]
+
+    end
+   end
+
+ erb :position_page
+
+end
 
 set :views, File.dirname(__FILE__) + '/views'
 
