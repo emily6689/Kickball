@@ -24,26 +24,14 @@ def csv_load
   hash
 end
 
-def get_team_name(hash)
-  hash.keys
-end
-
 teams = csv_load
-
-
-
-
 teams.each do |team|
-        binding.pryteam
 
-safe_url = URI::encode(team.first)
-
+  safe_url = URI::encode(team.first)
   get "/#{safe_url}" do
-    @team = team.last
-   @team.each do |player|
-
-     end
-    # erb :team_page
+    @team_name = team.first
+    @team_players = team.last
+    erb :team_page
   end
 
 end

@@ -6,24 +6,19 @@
   </head>
 
   <body>
-    <h1>Team List!!</h1>
 
-    <ul>
+
+
+    <h1 >Team List!!</h1>
+<div class="table">
+    <ul class="main_page">
       <% @teams.each do |team| %>
         <li> <a href="/<%= team.first %>"><%= team.first %></a></li>
       <% end %>
     </ul>
+</div>
 
-<% params[:name] = "blah"%>
   </body>
 </html>
 
 
-<p>safsd</p>
-<ul>
-  <!-- start my loop -->
-  <li>
-    <!-- team name -->
-  </li>
-  <!-- end loop -->
-</ul>

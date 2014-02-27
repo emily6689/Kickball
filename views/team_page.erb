@@ -6,28 +6,20 @@
   </head>
 
   <body>
-    <h1>Our Team Page</h1>
+    <h1><%=@team_name%></h1>
     <table>
 
+     <% @team_players.each do |player| %>
+      <tr>
+          <td><%= player["first_name"] %> <%= player["last_name"] %></td>
+          <td><%= player["position"] %> </td>
+      </tr>
 
-      <!-- each do -->
+     <%end%>
 
+   </table>
 
-
-      <!-- PRINT FIRST NAME -->
-       <!-- PRINT LAST NAME -->
-        <tr>
-          <td></td>
-
-        <!-- PRINT PLAYER POSITION-->
-
-         </tr>
-
-        <!-- end -->
-
-
-
-    </table>
+   <p><a href='/'>All Teams</a>
 
   </body>
 </html>
